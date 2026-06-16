@@ -1,0 +1,2 @@
+## License
+- Scripts (`scripts/`) and Python code: MIT.
