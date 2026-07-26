@@ -2,6 +2,17 @@
 heat_transfer_demo.py
 =====================
 
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
 Illustrative external-fin toy model with closed-cell porosity.
 
 We solve the 1-D transient conduction-convection fin equation
@@ -108,12 +119,8 @@ def demo():
                 label=f"$\\phi$={phi:.1f}")
     ax.set_xlabel("time (s)")
     ax.set_ylabel("fin-tip temperature (°C)")
-    ax.set_title(
-        "Illustrative external-fin toy model with closed-cell porosity\n"
-        r"$(\rho c)_\mathrm{eff}=(1-\phi)\rho c$, $k_\mathrm{eff}=(1-\phi)k_\mathrm{solid}$, "
-        r"$h_\mathrm{conv}$ and $P_\mathrm{fin}$ held constant",
-        fontsize=9,
-    )
+    # No figure title: the manuscript caption carries the model description,
+    # and MDPI figures are captioned rather than titled.
     ax.legend(title="porosity $\\phi$", fontsize=9, loc="best")
     ax.grid(alpha=0.3)
     fig.tight_layout()

@@ -2,11 +2,24 @@
 strut_lattices.py
 =================
 
-Generate strut-based lattice cubes for four canonical topologies:
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
+Generate strut-based lattice cubes for five canonical topologies:
 
     * SC      -- simple cubic   (edges of the unit cell)
-    * BCC     -- body-centred cubic (cube edges + body diagonals)
-    * FCC     -- face-centred cubic (cube edges + face diagonals)
+    * BCC     -- body-centred cubic (12 cube edges + 8 centre-to-corner
+                 struts = 20 struts/cell)
+    * FCC     -- face-centred cubic (12 cube edges + 24 corner-to-face-centre
+                 struts = 36 struts/cell)
     * OCTET   -- octet truss (FCC + face-centring nodes connected)
     * DIAMOND -- diamond cubic (tetrahedral coordination, four struts per node)
 
@@ -28,7 +41,7 @@ laptop.
 
 Outputs:
     generated_stl/lattice_{topology}_{phi}.stl   (target porosity tagged)
-    figures/fig_lattice_isoporous.{png,pdf}      (4 topologies, same phi)
+    figures/fig_lattice_isoporous.{png,pdf}      (5 topologies, same phi)
     figures/fig_lattice_porosity_sweep.{png,pdf} (octet sweep)
 """
 from __future__ import annotations
@@ -283,11 +296,8 @@ def render_isoporous_montage(target_phi: float, records):
                     ambient=0.32, light=(0.45, -0.55, 0.78))
         ax.set_title(f"{topo.upper()}\n$\\phi_{{\\rm meas}}={rec[2]:.2f}$",
                      fontsize=10)
-    fig.suptitle(
-        f"Same target bulk porosity $\\phi={target_phi:.2f}$, different "
-        f"strut-lattice topology (3D STL renders)",
-        fontsize=12,
-    )
+    # No figure title: the manuscript caption carries the
+    # description; MDPI figures are captioned, not titled.
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig_lattice_isoporous.png", dpi=210,
                 bbox_inches="tight")
@@ -305,9 +315,8 @@ def render_octet_sweep(records):
         render_mesh(ax, mesh, base_color=TOPOLOGY_COLOURS["octet"],
                     ambient=0.32, light=(0.45, -0.55, 0.78))
         ax.set_title(f"$\\phi={phi_meas:.2f}$", fontsize=10)
-    fig.suptitle("Octet-truss porosity sweep, 3D STL renders "
-                 "(strut radius is the sole knob)",
-                 fontsize=12)
+    # No figure title: the manuscript caption carries the
+    # description; MDPI figures are captioned, not titled.
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig_lattice_porosity_sweep.png", dpi=210,
                 bbox_inches="tight")

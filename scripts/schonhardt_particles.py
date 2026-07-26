@@ -2,6 +2,17 @@
 schonhardt_particles.py
 =======================
 
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
 Generate Schoenhardt-twisted triangular prism STL meshes parameterised by a
 single scalar twist angle in degrees.  Topology, height and base triangle
 edge length are kept constant.  Twist angle = 0 deg recovers the convex
@@ -100,10 +111,8 @@ def render_family(twists=(0, 15, 30, 45)):
         ax.set_box_aspect((1, 1, 1))
         ax.set_axis_off()
         ax.set_title(f"twist = {tw}$^\\circ$", fontsize=10)
-    fig.suptitle(
-        "Schoenhardt particle family: single-parameter non-convexity sweep\n"
-        "(edge length, height and topology constant)", fontsize=11,
-    )
+# No figure title: the manuscript caption carries the model description,
+# and MDPI figures are captioned rather than titled.
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig_schonhardt_family.png",
                 dpi=220, bbox_inches="tight")

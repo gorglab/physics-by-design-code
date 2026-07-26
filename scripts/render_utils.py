@@ -1,6 +1,18 @@
 """
 render_utils.py
 ===============
+
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
 Lightweight, dependency-free 3D STL renderer for figures.
 
 We do not want to pull in OpenGL/PyVista/Mayavi for a paper figure pipeline.

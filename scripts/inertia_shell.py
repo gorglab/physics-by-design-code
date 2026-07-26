@@ -2,8 +2,19 @@
 inertia_shell.py
 ================
 
-Demonstrate the second canonical "vary one thing at a time" trick that AM
-unlocks: keep the *outer* particle geometry fixed and change only the
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
+Demonstrate the second canonical "vary one thing at a time" sweep that AM
+supports: keep the *outer* particle geometry fixed and change only the
 *internal* mass distribution.  We model a hollow sphere whose printed shell
 thickness moves an internal ballast inwards or outwards.  Outer radius and
 total mass are held constant; only the principal moment of inertia changes.
@@ -14,7 +25,7 @@ changing the exterior CAD surface.
 
 Outputs:
     figures/fig_inertia_shell.png / .pdf
-    generated_stl/shell_t*.stl
+    generated_stl/shell_Router*_Rinner*.stl
 """
 from __future__ import annotations
 
@@ -67,11 +78,8 @@ def demo():
             color="#264653")
     ax.set_xlabel(r"normalised inner radius $q = R_\mathrm{in}/R$")
     ax.set_ylabel(r"normalised principal moment $I_p / (M R^2)$")
-    ax.set_title(
-        "Constant outer geometry, constant total mass:\n"
-        r"$I_p/(MR^2) = (2/5)(1-q^5)/(1-q^3)$ (uniform thick shell)",
-        fontsize=10,
-    )
+    # No figure title: the manuscript caption carries the model description,
+    # and MDPI figures are captioned rather than titled.
     ax.axhline(2 / 3, ls="--", color="#999",
                label=r"thin-shell limit $\frac{2}{3} M R^2$")
     ax.axhline(2 / 5, ls=":", color="#999",

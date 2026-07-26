@@ -1,8 +1,12 @@
-# Physics by Design - pinned Python dependencies for reproducing every
-# script-generated STL in this paper.
+# Physics by Design — pinned Python dependencies for reproducing every
+# script-generated figure and STL in this paper.
 #
-# Tested with CPython 3.10 and 3.11 on Linux (Ubuntu 22.04, x86_64).
-# Pinned to the minor version that produced the figures in main.pdf.
+# Tested with CPython 3.10 and 3.11 on Linux (Ubuntu 22.04, x86_64), and
+# independently re-verified with CPython 3.13.12 (numpy 2.4.6, scipy 1.17.1,
+# matplotlib 3.10.8, scikit-image 0.26.0, trimesh 4.12.2, pillow 12.1.1,
+# numpy-stl 3.2.0); both environments reproduce every value in Table 9 of
+# the manuscript exactly. Pinned to the minor version ranges that produced
+# the figures in main.pdf.
 #
 # Install:  python3 -m venv .venv && source .venv/bin/activate
 #           pip install -r requirements.txt
@@ -12,5 +16,5 @@ scipy>=1.10,<2
 matplotlib>=3.7,<4
 scikit-image>=0.21,<1
 trimesh>=4.0,<5
-pillow>=10.0,<12
+pillow>=10.0,<13
 numpy-stl>=3.1,<4

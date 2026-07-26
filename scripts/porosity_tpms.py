@@ -2,6 +2,17 @@
 porosity_tpms.py
 ================
 
+Physics by Design: Additive Manufacturing for Reproducible Science
+Daniel N. Wilke
+Gradient-Only Research Group (GorgLab) for Emerging Engineering Technology (EET)
+Mathematical and Computational Applications (MDPI),
+Special Issue "Advances in Computational and Applied Mechanics".
+
+Licence: MIT. Free to use, copy, modify and redistribute, with attribution.
+Provided "as is", without warranty of any kind, express or implied. The
+author accepts no liability for any use of this code or its outputs.
+Use at your own risk.
+
 Generate STL meshes of triply periodic minimal surfaces (TPMS) cubes whose
 porosity is controlled by a single scalar parameter.  The same external
 bounding box, lattice period and surface family are kept fixed across runs so
@@ -25,8 +36,6 @@ Usage (from the repo root):
 
 This writes a family of STLs to ``generated_stl/`` and a montage figure to
 ``figures/fig_porosity_family.png`` / ``.pdf``.
-
-Daniel N. Wilke, 2026.
 """
 from __future__ import annotations
 
@@ -194,11 +203,8 @@ def render_montage():
             _, phi = build_tpms_mesh(spec)
             _render_iso(ax, spec, f"{family}\n$\\phi$={phi:.2f}",
                         FAMILY_COLOURS[family])
-    fig.suptitle(
-        "Single-parameter porosity sweep across TPMS families\n"
-        "(unit cell, cube size and lattice period held constant; STL solids rendered)",
-        fontsize=11,
-    )
+    # No figure title: the manuscript caption carries the
+    # description; MDPI figures are captioned, not titled.
     fig.tight_layout()
     out_png = FIG_DIR / "fig_porosity_family.png"
     out_pdf = FIG_DIR / "fig_porosity_family.pdf"
